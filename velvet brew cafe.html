@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velvet Brew Cafe | Sip the Elegance</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #2C1810;
+            /* Dark Coffee Bean */
+            --secondary-color: #D4A373;
+            /* Latte Gold */
+            --accent-color: #FAEDCD;
+            /* Cream */
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-family: var(--font-heading);
+            letter-spacing: 2px;
+        }
+        .logo img{
+            height: 60px;
+            width: auto;
+
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: var(--text-light);
+            font-size: 1.5rem;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .section {
+            padding: 5rem 10%;
+        }
+
+        .about {
+            background-color: #fff;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 10px 10px 0px var(--secondary-color);
+        }
+
+        /* --- MENU SECTION --- */
+        .menu {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .menu h2 {
+            color: var(--secondary-color);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border: 1px solid var(--secondary-color);
+            transition: 0.3s;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            display: block;
+            margin-top: 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        /* --- CONTACT/FOOTER --- */
+        footer {
+            background-color: #1a0f0a;
+            color: #888;
+            padding: 3rem 10%;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+        }
+
+        .socials a {
+            margin: 0 10px;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background-color: var(--primary-color);
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style> <!-- Importing Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body> <!-- NAVIGATION -->
+    <nav>
+        <div class="logo"><img src="logo.jpg" alt="Velvet Brew Cafe Logo"></div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#contact">Visit Us</a></li>
+        </ul>
+    </nav> <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <h1>Velvet Brew Cafe</h1>
+        <p>Experience the smoothest coffee in the city. Where every cup tells a story.</p> <a href="#menu"
+            class="btn">View Menu</a>
+    </section> <!-- ABOUT SECTION -->
+    <section id="about" class="section about">
+        <div class="about-img"> <img
+                src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1347&q=80"
+                alt="Barista pouring coffee"> </div>
+        <div class="about-text">
+            <h2>The Velvet Standard</h2>
+            <p>Founded in 2023, Velvet Brew was born from a desire to slow down time. We believe coffee isn't just a
+                morning ritual; it's an experience.</p> <br>
+            <p>Our beans are ethically sourced from the highlands of Ethiopia and Colombia, roasted locally to
+                perfection, and brewed with water filtered for the purest taste. Come sit in our velvet armchairs, enjoy
+                the jazz, and let the aroma wrap around you.</p>
+        </div>
+    </section> <!-- MENU SECTION -->
+    <section id="menu" class="section menu">
+        <h2>Signature Brews</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <h3>The Velvet Latte</h3>
+                <p>Double shot espresso, steamed oat milk, and a hint of vanilla bean.</p> <span
+                    class="price">$5.50</span>
+            </div>
+            <div class="menu-item">
+                <h3>Midnight Cold Brew</h3>
+                <p>Steeped for 24 hours, served over ice with a chocolate rim.</p> <span class="price">$6.00</span>
+            </div>
+            <div class="menu-item">
+                <h3>Spiced Chai</h3>
+                <p>House-made chai concentrate with fresh cardamom and cinnamon.</p> <span class="price">$4.75</span>
+            </div>
+            <div class="menu-item">
+                <h3>Matcha Velvet</h3>
+                <p>Premium ceremonial grade matcha whisked with coconut milk.</p> <span class="price">$5.25</span>
+            </div>
+        </div> <br><br> <a href="#" class="btn"
+            style="background: transparent; border: 2px solid var(--secondary-color); color: var(--secondary-color);">Download
+            Full Menu</a>
+    </section> <!-- FOOTER / CONTACT -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Visit Us</h4>
+                <p>123 Espresso Lane</p>
+                <p>Coffee District, NY 10012</p>
+            </div>
+            <div class="footer-col">
+                <h4>Hours</h4>
+                <p>Mon - Fri: 7am - 8pm</p>
+                <p>Sat - Sun: 8am - 9pm</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>(555) 123-4567</p>
+                <p>hello@velvetbrew.com</p>
+            </div>
+        </div>
+        <div class="socials"> <a href="#">Instagram</a> <a href="#">Facebook</a> <a href="#">Twitter</a> </div> <br>
+        <p>&copy; 2023 Velvet Brew Cafe. All rights reserved.</p>
+    </footer> <!-- JAVASCRIPT FOR MOBILE MENU -->
+    <script> function toggleMenu() { const navLinks = document.querySelector('.nav-links'); navLinks.classList.toggle('active'); } </script>
+</body>
+
+</html>
